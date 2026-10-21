@@ -60,7 +60,7 @@ html{scroll-behavior:smooth}
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
 <nav class="nav"><div class="logo">⚓ Zizooo</div>
-<ul><li><a href="#projects">Projects</a></li><li><a href="mohamedelkhabit1@gamil.com">Email</a></li></ul>
+<ul><li><a href="#projects">Projects</a></li><li><a href="https://www.facebook.com/share/1A82baqsER/?mibextid=wwXIfr">Faceboke</a></li></ul>
 <a class="btn" href="https://www.linkedin.com/in/mohamed-abd-elaziz-8aa7023a9?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Contact Me</a></nav>
 <div id="scroller"></div>
 <main id="projects"></main>
@@ -256,7 +256,7 @@ const P=[
 {t:'Project 6',d:'Dashboard preview. Add a short business summary here.',v:0,u:'https://www.dropbox.com/scl/fi/k5565uv8w7pm6vx7q8hh0/IMG_8917.jpeg?rlkey=3imsw8qom75014x9lz129hh1q&st=wxljota4&dl=0'}
 ];
 const el=document.getElementById('projects');
-el.innerHTML=P.map((p,i)=>`<section class="proj"><span class="n">0${i+1} / 0${P.length}</span><h2>${p.t}</h2><p>${p.d}</p><div class="frame">${p.v?`<video controls playsinline preload="metadata"><source src="${raw(p.u)}" type="video/mp4"></video>`:`<img loading="lazy" alt="${p.t}" src="${raw(p.u)}">`}</div></section>`).join('')+'<section class="end"><p>Like what you see?</p><h2>Let’s work together</h2><a class="btn" href="mailto:you@example.com">Contact Me</a></section>';
+el.innerHTML=P.map((p,i)=>`<section class="proj"><span class="n">0${i+1} / 0${P.length}</span><h2>${p.t}</h2><p>${p.d}</p><div class="frame">${p.v?`<video controls playsinline preload="metadata"><source src="${raw(p.u)}" type="video/mp4"></video>`:`<img loading="lazy" alt="${p.t}" src="${raw(p.u)}">`}</div></section>`).join('')+'<section class="end"><p>Like what you see?</p><h2>Let’s work together</h2><a class="btn" href="https://www.linkedin.com/in/mohamed-abd-elaziz-8aa7023a9?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Contact Me</a></section>';
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.15});
 el.querySelectorAll('.proj').forEach(x=>io.observe(x));
 })();
