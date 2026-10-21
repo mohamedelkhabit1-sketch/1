@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Abd ElAziz — Data Analyst Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#02040a;--fg:#eaf0ff;--mut:#8b98b8;--b1:#2f6bff;--b2:#6ea8ff;--ln:rgba(255,255,255,.13);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#02040a;--fg:#eaf0ff}}
+:root[data-theme="dark"]{--bg:#02040a;--fg:#eaf0ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{margin:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:'Inter Tight',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
+#scroller{height:500vh}
+.nav{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:10;width:min(900px,92vw);display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(14,22,44,.45);border:1px solid var(--ln);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo{font-weight:600;letter-spacing:-.02em;font-size:17px}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--mut)}
+.nav a{color:inherit;text-decoration:none;transition:color .2s}.nav a:hover{color:var(--fg)}
+.btn{display:inline-block;border:0;cursor:pointer;font:500 14px 'Inter Tight',sans-serif;color:#fff;background:var(--b1);padding:11px 20px;border-radius:999px;text-decoration:none;box-shadow:0 0 28px rgba(47,107,255,.55);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px);background:#4a80ff}
+.btn.g{background:rgba(255,255,255,.06);border:1px solid var(--ln);box-shadow:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.btn.g:hover{background:rgba(255,255,255,.12)}
+.btn:focus-visible,.nav a:focus-visible{outline:2px solid var(--b2);outline-offset:3px}
+.ov{position:fixed;inset:0;z-index:5;pointer-events:none;visibility:hidden;opacity:0;display:flex;will-change:opacity,transform}
+.ov .btn{pointer-events:auto}
+h1,h2{font-weight:500;letter-spacing:-.045em;line-height:.96}
+h2{font-size:clamp(2.2rem,5.2vw,4.8rem)}
+p{color:var(--mut);font-size:15px;line-height:1.55}
+.hero{align-items:flex-end;justify-content:space-between;padding:0 5vw 8vh}
+.hero h1{font-size:clamp(1.6rem,3vw,2.6rem);max-width:12em}
+.hero span{font-size:12px;color:var(--mut);letter-spacing:.1em}
+.split{align-items:flex-end;justify-content:space-between;padding:0 5vw 12vh;gap:4vw}
+.split .l{max-width:36vw}.split .r{max-width:28vw;display:flex;flex-direction:column;gap:22px}
+.pill{display:inline-block;font-size:11px;letter-spacing:.14em;color:var(--b2);border:1px solid rgba(110,168,255,.4);background:rgba(47,107,255,.12);padding:6px 12px;border-radius:999px;margin-bottom:20px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.top{align-items:flex-start;justify-content:space-between;padding:15vh 5vw 0;gap:4vw}
+.top p{max-width:290px;margin-top:10px}
+.gp{position:fixed;z-index:4;pointer-events:none;visibility:hidden;opacity:0;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--ln);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(20,50,140,.35)}
+.gp i{font-style:normal;color:var(--b2);margin-right:8px}
+#cards{position:fixed;left:50%;bottom:calc(5vh + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(1180px,92vw);display:grid;grid-template-columns:repeat(4,1fr);gap:14px;perspective:1400px;z-index:6;pointer-events:none}
+.card{visibility:hidden;opacity:0;padding:22px 20px 24px;border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid var(--ln);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12);transform-style:preserve-3d}
+.card b{display:block;font-weight:500;font-size:13px;color:var(--b2);margin-bottom:34px}
+.card h3{font-weight:500;font-size:19px;letter-spacing:-.03em;margin-bottom:8px}
+.card p{font-size:13px}
+@media(max-width:760px){.nav ul{display:none}.split{flex-direction:column;align-items:flex-start;justify-content:flex-end;padding-bottom:9vh}.split .l,.split .r{max-width:100%}.top{flex-direction:column;gap:12px}#cards{grid-template-columns:1fr 1fr;gap:10px}.card{padding:14px}.card b{margin-bottom:12px}.card p{display:none}.card h3{font-size:15px;margin:0}.hero{flex-direction:column;align-items:flex-start;gap:10px}}
+html{scroll-behavior:smooth}
+#projects{position:relative;z-index:8;background:var(--bg)}
+.proj{min-height:100vh;max-width:1200px;margin:0 auto;padding:14vh 5vw 8vh;display:flex;flex-direction:column;justify-content:center;gap:26px;opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.proj.in{opacity:1;transform:none}
+.proj .n{font-size:13px;color:var(--b2);letter-spacing:.14em}
+.proj h2{font-size:clamp(2rem,4.5vw,4rem)}
+.proj p{max-width:520px}
+.frame{border-radius:22px;overflow:hidden;border:1px solid var(--ln);background:#05070f;box-shadow:0 30px 80px rgba(20,50,140,.3)}
+.frame img,.frame video{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain}
+.end{padding:12vh 5vw 16vh;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<nav class="nav"><div class="logo">⚓ Zizooo</div>
+<ul><li><a href="#projects">Projects</a></li><li><a href="mohamedelkhabit1@gamil.com">Email</a></li></ul>
+<a class="btn" href="https://www.linkedin.com/in/mohamed-abd-elaziz-8aa7023a9?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Contact Me</a></nav>
+<div id="scroller"></div>
+<main id="projects"></main>
+
+<section class="ov hero" id="o0"><h1>Mohamed Abd ElAziz 01158014592</h1><span>SCROLL</span></section>
+
+<section class="ov split" id="o1">
+<div class="l"><span class="pill">DATA ANALYST</span><h2>Clear Reports. Confident Decisions.</h2></div>
+<div class="r"><p>I build dashboards and reports that show leaders what is happening in the business and why. Sales, performance and operations, all in one clear view, so your team spends less time searching for numbers and more time acting on them.</p>
+<div class="btns"><a class="btn" href="mohamedelkhabit1@gamil.com">Get In Touch</a><a class="btn g" href="#projects">View My Work</a></div></div>
+</section>
+
+<div id="pills">
+<div class="gp" style="left:10%;top:24%"><i>◆</i>Power BI</div>
+<div class="gp" style="right:9%;top:21%"><i>●</i>DAX</div>
+<div class="gp" style="left:6%;top:52%"><i>▲</i>SQL Server</div>
+<div class="gp" style="right:7%;top:50%"><i>✦</i>Excel</div>
+<div class="gp" style="left:20%;top:74%"><i>◐</i>Python</div>
+<div class="gp" style="right:19%;top:73%"><i>⬢</i>HTML-CSS-Js</div>
+</div>
+
+<section class="ov top" id="o3">
+<h2>Data<br>With Purpose</h2>
+<p>From raw numbers to reports your whole team can read: dashboards, reporting and automation built around your business goals.</p>
+</section>
+
+<div id="cards">
+<div class="card"><b>01</b><h3>Interactive Dashboards</h3><p>Power BI dashboards that show sales and performance at a glance.</p></div>
+<div class="card"><b>02</b><h3>Smart Business Metrics</h3><p>DAX measures that turn your data into the KPIs you track.</p></div>
+<div class="card"><b>03</b><h3>Reliable Reporting</h3><p>SQL Server queries and clean data behind every report.</p></div>
+<div class="card"><b>04</b><h3>Time-Saving Automation</h3><p>Excel, VBA and Python to replace repetitive manual work.</p></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mob=innerWidth<760||/Mobi|Android/i.test(navigator.userAgent);
+const clamp=THREE.MathUtils.clamp,r=Math.random,WY=-1.55;
+const cv=document.getElementById('gl');
+const ren=new THREE.WebGLRenderer({canvas:cv,antialias:false});
+const dpr=Math.min(devicePixelRatio||1,2);
+ren.setPixelRatio(dpr);ren.setClearColor(0x02040a,1);
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(50,1,.1,200);
+
+/* ---------- particle targets ---------- */
+const N=mob?22000:52000;
+const A=new Float32Array(N*3),B=new Float32Array(N*3),C=new Float32Array(N*3),R=new Float32Array(N*4);
+const tc=document.createElement('canvas');tc.width=600;tc.height=160;
+const tx=tc.getContext('2d');tx.fillStyle='#fff';tx.font='800 118px "Inter Tight",Arial,sans-serif';tx.textAlign='center';tx.textBaseline='middle';tx.fillText('Zizooo',300,84);
+const td=tx.getImageData(0,0,600,160).data,tp=[];
+for(let i=3;i<td.length;i+=4)if(td[i]>128){const k=(i-3)/4;tp.push(k%600,k/600|0)}
+const H=1,CY=.55,nT=tp.length?Math.floor(N*.13):0;
+for(let i=0;i<N;i++){
+  let u=r()*2-1,th=r()*6.2832,q=Math.sqrt(1-u*u),rad=1.1*(.97+.06*r());
+  const a=[q*Math.cos(th)*rad,CY+u*rad,q*Math.sin(th)*rad];
+  const an=r()*6.2832;let b;
+  if(r()<.2){const v=r(),rr=.05+.05*(1-v)+.3*Math.pow(1-v,7);b=[Math.cos(an)*rr,-1.5+v*1.7,Math.sin(an)*rr]}
+  else{const tau=.1+r()*1.1,w=3.2+r()*.9,vv=r()*1.7,rr=.08+vv*tau*tau*.55+.2*r()*tau;
+    b=[Math.cos(an+tau)*rr,.1+w*tau-1.6*tau*tau,Math.sin(an+tau)*rr]}
+  let c;
+  if(i<nT){const k=(r()*(tp.length/2)|0)*2;c=[(tp[k]/600-.5)*1.7,CY-(tp[k+1]/160-.5)*.453,H+.012]}
+  else{const e=r()*12|0,ax=e>>2,k=e&3,t=(r()*2-1)*H,o=[k&1?H:-H,k&2?H:-H];c=[0,0,0];
+    c[ax]=t;c[(ax+1)%3]=o[0];c[(ax+2)%3]=o[1];
+    c[0]+=(r()-.5)*.012;c[1]+=(r()-.5)*.012+CY;c[2]+=(r()-.5)*.012}
+  A.set(a,i*3);B.set(b,i*3);C.set(c,i*3);R.set([r(),r(),r(),r()],i*4);
+}
+const geo=new THREE.BufferGeometry();
+geo.setAttribute('position',new THREE.BufferAttribute(A,3));
+geo.setAttribute('aA',new THREE.BufferAttribute(A,3));
+geo.setAttribute('aB',new THREE.BufferAttribute(B,3));
+geo.setAttribute('aC',new THREE.BufferAttribute(C,3));
+geo.setAttribute('aR',new THREE.BufferAttribute(R,4));
+geo.boundingSphere=new THREE.Sphere(new THREE.Vector3(),50);
+
+const U={uMix:{value:0},uTime:{value:0},uPx:{value:dpr},uWater:{value:WY},uMouse:{value:new THREE.Vector3(99,99,0)},uMotion:{value:RM?0:1}};
+const vs=`attribute vec3 aA,aB,aC;attribute vec4 aR;
+uniform float uMix,uTime,uPx,uWater,uMirror,uMotion;uniform vec3 uMouse;
+varying float vA;varying vec3 vCol;
+vec3 curl(vec3 p){float t=uTime;return vec3(sin(p.y*2.1+t*.6)+cos(p.z*1.7-t*.4),sin(p.z*2.3+t*.5)+cos(p.x*1.9+t*.3),sin(p.x*2.-t*.5)+cos(p.y*1.6+t*.7));}
+void main(){
+ float m1=clamp(uMix,0.,1.),m2=clamp(uMix-1.,0.,1.);
+ float t1=smoothstep(0.,1.,clamp(m1*1.5-aR.x*.5,0.,1.));
+ float t2=smoothstep(0.,1.,clamp(m2*1.5-aR.x*.5,0.,1.));
+ vec3 p=mix(aA,aB,t1);p=mix(p,aC,t2);
+ float sw=sin(3.14159*t1)+sin(3.14159*t2);
+ p+=curl(p*1.3+aR.y*6.)*.32*sw*uMotion;
+ p+=sin(vec3(aR.y,aR.z,aR.w)*40.+uTime*2.)*.008*uMotion;
+ if(uMirror>.5)p.y=2.*uWater-p.y;
+ vec4 w=modelMatrix*vec4(p,1.);
+ vec2 dm=w.xy-uMouse.xy;float f=exp(-dot(dm,dm)*3.)*(1.-uMirror)*uMotion;
+ w.xy+=normalize(dm+vec2(1e-4))*f*.45;
+ vec4 mv=viewMatrix*w;gl_Position=projectionMatrix*mv;
+ gl_PointSize=(1.2+aR.z*1.9)*uPx*(7./-mv.z);
+ vA=mix(1.,.2,uMirror)*(.5+.5*aR.w);
+ vCol=mix(vec3(.184,.42,1.),vec3(.43,.66,1.),aR.z*.8+clamp(p.y*.1,0.,.3));
+}`;
+const fs=`varying float vA;varying vec3 vCol;
+void main(){float d=length(gl_PointCoord-.5);float a=smoothstep(.5,0.,d);a*=a;gl_FragColor=vec4(vCol*(1.+a*.7),a*vA);}`;
+const mk=m=>new THREE.ShaderMaterial({uniforms:Object.assign({uMirror:{value:m}},U),vertexShader:vs,fragmentShader:fs,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+const grp=new THREE.Group();
+const pts=new THREE.Points(geo,mk(0)),ref=new THREE.Points(geo,mk(1));
+pts.frustumCulled=ref.frustumCulled=false;grp.add(ref,pts);
+
+/* ---------- water ---------- */
+const rip=[];for(let i=0;i<10;i++)rip.push(new THREE.Vector3(0,0,-100));
+const WU={uTime:U.uTime,uRip:{value:rip}};
+const water=new THREE.Mesh(new THREE.PlaneGeometry(44,44),new THREE.ShaderMaterial({uniforms:WU,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+vertexShader:`varying vec2 vP;void main(){vec4 w=modelMatrix*vec4(position,1.);vP=w.xz;gl_Position=projectionMatrix*viewMatrix*w;}`,
+fragmentShader:`varying vec2 vP;uniform float uTime;uniform vec3 uRip[10];
+void main(){vec2 p=vP;float t=uTime,d=length(p);float rs=0.,wv=0.;
+ for(int i=0;i<10;i++){vec3 q=uRip[i];float age=t-q.z;if(age>0.&&age<5.){float dd=length(p-q.xy);float env=exp(-age*.9);rs+=exp(-pow((dd-age*2.2)*3.,2.))*env;wv+=sin(dd*10.-age*6.)*env*exp(-dd*.25);}}
+ float v=d*2.2-t*.1+.35*sin(p.x*.8+t*.3)*sin(p.y*.7-t*.2)+wv*.12;
+ float l=pow(1.-abs(sin(v*3.14159)),14.);
+ float fade=exp(-d*.16);float g=exp(-d*d*.35)*.2;
+ float k=(l*.7+rs*.9)*fade+g;
+ vec3 c=mix(vec3(.184,.42,1.),vec3(.43,.66,1.),clamp(k,0.,1.));
+ gl_FragColor=vec4(c*k,k);}`}));
+water.rotation.x=-Math.PI/2;water.position.y=WY;
+
+/* ---------- stars ---------- */
+const sp=new Float32Array(1800*3);
+for(let i=0;i<1800;i++){const u=r()*2-1,th=r()*6.28,q=Math.sqrt(1-u*u),d=35+r()*30;sp.set([q*Math.cos(th)*d,u*d,q*Math.sin(th)*d],i*3)}
+const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sp,3));
+const stars=new THREE.Points(sg,new THREE.PointsMaterial({size:1.2,sizeAttenuation:false,color:0x9db8ff,transparent:true,opacity:.5,depthWrite:false}));
+scene.add(stars,water,grp);
+
+/* ---------- input ---------- */
+const ray=new THREE.Raycaster(),pZ=new THREE.Plane(new THREE.Vector3(0,0,1),0),pY=new THREE.Plane(new THREE.Vector3(0,1,0),-WY);
+const ndc=new THREE.Vector2(),hit=new THREE.Vector3(),mT=new THREE.Vector3(99,99,0);
+let mx=0,my=0,tmx=0,tmy=0,ri=0,lastR=new THREE.Vector3(1e3,0,0),lastT=0,T=0;
+const spawn=(x,z)=>{if(RM)return;rip[ri++%10].set(x,z,T)};
+addEventListener('pointermove',e=>{
+  tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);
+  ndc.set(tmx,tmy);ray.setFromCamera(ndc,cam);
+  if(ray.ray.intersectPlane(pZ,hit))mT.copy(hit);
+  if(ray.ray.intersectPlane(pY,hit)&&Math.hypot(hit.x,hit.z)<20&&(hit.distanceTo(lastR)>.4||T-lastT>.25)&&hit.distanceTo(lastR)>.08){spawn(hit.x,hit.z);lastR.copy(hit);lastT=T}
+});
+addEventListener('pointerdown',e=>{ndc.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1));ray.setFromCamera(ndc,cam);if(ray.ray.intersectPlane(pY,hit))spawn(hit.x,hit.z)});
+function resize(){const w=innerWidth,h=innerHeight;ren.setSize(w,h,false);cam.aspect=w/h;cam.position.z=7+Math.max(0,1.2-w/h)*5;cam.updateProjectionMatrix()}
+addEventListener('resize',resize);resize();
+
+/* ---------- overlays ---------- */
+const $=s=>document.querySelector(s),o0=$('#o0'),o1=$('#o1'),o3=$('#o3'),gps=[...document.querySelectorAll('.gp')],cards=[...document.querySelectorAll('.card')];
+const ramp=(s,a,b,c,d)=>clamp((s-a)/(b-a),0,1)*(1-clamp((s-c)/(d-c),0,1));
+const show=(el,o)=>{el.style.opacity=o;el.style.visibility=o>.01?'visible':'hidden';el.style.transform=`translateY(${(1-o)*24}px)`};
+
+/* ---------- loop ---------- */
+let cs=0,prev=performance.now(),nextDrip=0;
+function frame(now){
+  requestAnimationFrame(frame);
+  const dt=Math.min((now-prev)/1000,.05);prev=now;
+  if(!RM)T+=dt;U.uTime.value=T;
+  const max=Math.max(1,$('#scroller').offsetHeight-innerHeight);
+  const tgt=clamp(scrollY/max*4,0,4);
+  cs+=(tgt-cs)*(RM?1:1-Math.exp(-dt*5));
+  U.uMix.value=clamp(cs,0,1)+clamp(cs-2,0,1);
+  const k=clamp(cs-2,0,1);
+  mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
+  cam.position.x+=(mx*.6-cam.position.x)*.05;
+  cam.position.y+=(.9+my*.3-cam.position.y)*.05;
+  cam.lookAt(0,.2,0);
+  U.uMouse.value.x+=(mT.x-U.uMouse.value.x)*.2;U.uMouse.value.y+=(mT.y-U.uMouse.value.y)*.2;
+  grp.rotation.y=RM?0:((T*.12)%6.2832)*(1-k)+Math.sin(T*.3)*.12*k;
+  grp.position.y=(RM?0:Math.sin(T*.8)*.05*(1-clamp(cs,0,1)))+.4*clamp((cs-3.2)/.6,0,1);
+  U.uWater.value=WY-grp.position.y;
+  stars.rotation.y=T*.004;
+  if(!RM&&T>nextDrip){spawn(0,0);nextDrip=T+2.6}
+  show(o0,ramp(cs,-1,-.5,.1,.4));
+  show(o1,ramp(cs,.6,1,1.3,1.6));
+  show(o3,ramp(cs,2.6,3,9,10));
+  gps.forEach((g,i)=>{const p=ramp(cs,1.3+i*.04,1.65+i*.04,2,2.35),d=.5+(i%3)*.5;
+    g.style.opacity=p;g.style.visibility=p>.01?'visible':'hidden';
+    g.style.transform=`translate3d(${mx*d*-40+Math.sin(T*.6+i*1.7)*10}px,${my*d*30+Math.cos(T*.5+i*2.1)*12+(1-p)*20}px,0)`});
+  cards.forEach((c,i)=>{const p=clamp((cs-3.25-i*.1)/.35,0,1);
+    c.style.opacity=p;c.style.visibility=p>.01?'visible':'hidden';
+    c.style.transform=`rotateX(14deg) rotateY(${(i-1.5)*-8}deg) translateY(${(1-p)*60}px)`});
+  ren.render(scene,cam);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+<script>
+/* ===== Projects: عدّل العناوين والوصف هنا (v:1 = فيديو, v:0 = صورة) ===== */
+(()=>{
+const raw=u=>u.replace('dl=0','raw=1');
+const P=[
+{t:'Project 1',d:'Dashboard walkthrough. Add a short business summary here.',v:1,u:'https://www.dropbox.com/scl/fi/j4so2eojpd8isilnudjy9/9266925094c44eba9f8efad4f06e433a.mov?rlkey=ner0evgd40jr7smog9bvdm80l&st=6dperzch&dl=0'},
+{t:'Project 2',d:'Dashboard walkthrough. Add a short business summary here.',v:1,u:'https://www.dropbox.com/scl/fi/k6w7yrrm0qh41oatovffe/copy_2A7D48E1-0E87-49FD-ADC5-AC61F4704162.mov?rlkey=bf2s6x05sqa9h8oq7s4e7h6ej&st=vfz0yrg7&dl=0'},
+{t:'Project 3',d:'Dashboard walkthrough. Add a short business summary here.',v:1,u:'https://www.dropbox.com/scl/fi/ruhqjxrkr67816enpivg2/e5bb4793ffd6445094ed0433d5461ed2.mov?rlkey=ktlpfpxsphy8ch3puay3xzgjr&st=656orezk&dl=0'},
+{t:'Project 4',d:'Dashboard preview. Add a short business summary here.',v:0,u:'https://www.dropbox.com/scl/fi/bq8vo5llxtlsf9out66ye/IMG_8915.jpeg?rlkey=2ith28s7lmmtcj0li164a6ajc&st=z6uywbcx&dl=0'},
+{t:'Project 5',d:'Dashboard preview. Add a short business summary here.',v:0,u:'https://www.dropbox.com/scl/fi/eevh13e72sz0k8lsozx27/IMG_8916.jpeg?rlkey=dnbba0xjcn6jgp5xtivbb6zyv&st=nk6io7bk&dl=0'},
+{t:'Project 6',d:'Dashboard preview. Add a short business summary here.',v:0,u:'https://www.dropbox.com/scl/fi/k5565uv8w7pm6vx7q8hh0/IMG_8917.jpeg?rlkey=3imsw8qom75014x9lz129hh1q&st=wxljota4&dl=0'}
+];
+const el=document.getElementById('projects');
+el.innerHTML=P.map((p,i)=>`<section class="proj"><span class="n">0${i+1} / 0${P.length}</span><h2>${p.t}</h2><p>${p.d}</p><div class="frame">${p.v?`<video controls playsinline preload="metadata"><source src="${raw(p.u)}" type="video/mp4"></video>`:`<img loading="lazy" alt="${p.t}" src="${raw(p.u)}">`}</div></section>`).join('')+'<section class="end"><p>Like what you see?</p><h2>Let’s work together</h2><a class="btn" href="mailto:you@example.com">Contact Me</a></section>';
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.15});
+el.querySelectorAll('.proj').forEach(x=>io.observe(x));
+})();
+</script>
+</body>
+</html>
