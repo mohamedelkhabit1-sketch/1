@@ -29,8 +29,9 @@ h1,h2{font-weight:500;letter-spacing:-.045em;line-height:.96}
 h2{font-size:clamp(2.2rem,5.2vw,4.8rem)}
 p{color:var(--mut);font-size:15px;line-height:1.55}
 .hero{align-items:flex-end;justify-content:space-between;padding:0 5vw 8vh}
-.hero h1{font-size:clamp(1.6rem,3vw,2.6rem);max-width:12em}
-.hero span{font-size:12px;color:var(--mut);letter-spacing:.1em}
+.hero h1{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:600;max-width:12em;margin-bottom:10px}
+.ph{display:block;font-size:15px;color:var(--fg);letter-spacing:.06em;text-decoration:none;pointer-events:auto}
+.sc{font-size:10px;color:var(--mut);letter-spacing:.2em}
 .split{align-items:flex-end;justify-content:space-between;padding:0 5vw 12vh;gap:4vw}
 .split .l{max-width:36vw}.split .r{max-width:28vw;display:flex;flex-direction:column;gap:22px}
 .pill{display:inline-block;font-size:11px;letter-spacing:.14em;color:var(--b2);border:1px solid rgba(110,168,255,.4);background:rgba(47,107,255,.12);padding:6px 12px;border-radius:999px;margin-bottom:20px}
@@ -44,7 +45,7 @@ p{color:var(--mut);font-size:15px;line-height:1.55}
 .card b{display:block;font-weight:500;font-size:13px;color:var(--b2);margin-bottom:34px}
 .card h3{font-weight:500;font-size:19px;letter-spacing:-.03em;margin-bottom:8px}
 .card p{font-size:13px}
-@media(max-width:760px){.nav ul{display:none}.split{flex-direction:column;align-items:flex-start;justify-content:flex-end;padding-bottom:9vh}.split .l,.split .r{max-width:100%}.top{flex-direction:column;gap:12px}#cards{grid-template-columns:1fr 1fr;gap:10px}.card{padding:14px}.card b{margin-bottom:12px}.card p{display:none}.card h3{font-size:15px;margin:0}.hero{flex-direction:column;align-items:flex-start;gap:10px}}
+@media(max-width:760px){.nav ul{display:none}.split{flex-direction:column;align-items:flex-start;justify-content:flex-end;padding-bottom:9vh}.split .l,.split .r{max-width:100%}.top{flex-direction:column;gap:12px}#cards{grid-template-columns:1fr 1fr;gap:10px}.card{padding:14px}.card b{margin-bottom:12px}.card p{display:none}.card h3{font-size:15px;margin:0}.hero{flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:18px}}
 html{scroll-behavior:smooth}
 #projects{position:relative;z-index:8;background:var(--bg)}
 .proj{min-height:100vh;max-width:1200px;margin:0 auto;padding:14vh 5vw 8vh;display:flex;flex-direction:column;justify-content:center;gap:26px;opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
@@ -60,17 +61,23 @@ html{scroll-behavior:smooth}
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
 <nav class="nav"><div class="logo">⚓ Zizooo</div>
-<ul><li><a href="#projects">Projects</a></li><li><a href="https://www.facebook.com/share/1A82baqsER/?mibextid=wwXIfr">Faceboke</a></li></ul>
+<ul><li><a href="#projects">Projects</a></li><li><a href="https://www.facebook.com/share/1A82baqsER/?mibextid=wwXIfr">Facebook</a></li></ul>
 <a class="btn" href="https://www.linkedin.com/in/mohamed-abd-elaziz-8aa7023a9?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Contact Me</a></nav>
 <div id="scroller"></div>
 <main id="projects"></main>
 
-<section class="ov hero" id="o0"><h1>SCROLL</h1><span>Mohamed Abd ElAziz 01158014592</span></section>
+<section class="ov hero" id="o0">
+  <div class="who">
+    <h1>Mohamed Abd ElAziz Ibrahim</h1>
+    <a class="ph" href="tel:01158014592">01158014592</a>
+  </div>
+  <span class="sc">SCROLL ↓</span>
+</section>
 
 <section class="ov split" id="o1">
 <div class="l"><span class="pill">DATA ANALYST</span><h2>Clear Reports. Confident Decisions.</h2></div>
 <div class="r"><p>I build dashboards and reports that show leaders what is happening in the business and why. Sales, performance and operations, all in one clear view, so your team spends less time searching for numbers and more time acting on them.</p>
-<div class="btns"><a class="btn" href="mohamedelkhabit1@gamil.com">Get In Touch</a><a class="btn g" href="#projects">View My Work</a></div></div>
+<div class="btns"><a class="btn" href="mailto:mohamedelkhabit1@gmail.com">Get In Touch</a><a class="btn g" href="#projects">View My Work</a></div></div>
 </section>
 
 <div id="pills">
